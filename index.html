@@ -1,0 +1,29 @@
+<html>
+<body>
+    <button id="bouton1" onclick="envoyerCommande()">Activer Bouton LabVIEW</button>
+    
+    <script>
+        function envoyerCommande() {
+            // Créer une requête POST vers LabVIEW
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://127.0.0.1:8080/WebService4/Serveur_POST", true); // Remplace localhost par ton adresse IP si besoin
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            // Définir les données à envoyer
+            var data = "bouton1=on";
+
+            // Envoyer la requête avec les données
+            xhr.send(data);
+
+            // Gérer la réponse
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    alert("Commande envoyée avec succès !");
+                } else {
+                    alert("Erreur : " + xhr.status);
+                }
+            };
+        }
+    </script>
+</body>
+</html>
